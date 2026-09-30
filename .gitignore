@@ -4,6 +4,7 @@ out/
 !**/src/test/**/out/
 .idea
 repoTest.iml
+java_git.iml
 
 ### Eclipse ###
 .apt_generated
