@@ -1,4 +1,3 @@
-package PACKAGE_NAME;
-
-public interface ClientRepostitory {
+public interface PersonRepo {
+    Person findById(Long id);
 }
