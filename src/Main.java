@@ -22,7 +22,7 @@ public class Main {
         clientList.add(client2);
 
         ClientRepository clientRepository = new ClientRepositoryImpl(clientList);
-        int totalbyCLient = clientRepository.totalByClient(1);
+        int totalbyCLient = clientRepository.totalByClient(12);
         System.out.println(totalbyCLient);
 
     }

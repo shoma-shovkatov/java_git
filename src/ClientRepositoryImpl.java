@@ -16,15 +16,21 @@ public class ClientRepositoryImpl implements ClientRepository {
         }
         throw new IllegalArgumentException("Invalid id");
     }
-
     public int totalByClient(int id) {
         int totalBalance = 0;
+        Client found = null;
         for (Client client : clientList) {
-            if (client.getId()==(id)) {
-                for (Account account : client.getAccountList()) {
-                    totalBalance = totalBalance + account.getBalance();
-                }
+            if (client.getId() == (id)) {
+                found = client;
+                break;
             }
-        }return totalBalance;
+        }
+        if (found == null) {
+            throw new IllegalArgumentException("Client not found with id: " + id);
+        }
+        for (Account account : found.getAccountList()) {
+            totalBalance = totalBalance + account.getBalance();
+        }
+        return totalBalance;
     }
 }
