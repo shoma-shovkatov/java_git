@@ -9,12 +9,10 @@ public class ClientRepositoryImpl implements ClientRepository {
 
     @Override
     public Client findById(Long id) {
-        for (Client client : clientList) {
-            if (client.getId().equals(id)) {
-                return client;
-            }
-        }
-        throw new IllegalArgumentException("Invalid id");
+        return clientList.stream()
+                .filter(e -> e.getId().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new ClientNotFoundException(id));
     }
     public int totalByClient(int id) {
         int totalBalance = 0;
