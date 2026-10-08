@@ -14,6 +14,11 @@ public class ClientRepositoryImpl implements ClientRepository {
                 .findFirst()
                 .orElseThrow(() -> new ClientNotFoundException(id));
     }
+    /**
+     * Calculate total sum balance by client id
+     * @param id the id of the client
+     * @return total balance of the client
+     */
     public int totalByClient(int id) {
         int totalBalance = 0;
         Client found = null;
@@ -24,7 +29,7 @@ public class ClientRepositoryImpl implements ClientRepository {
             }
         }
         if (found == null) {
-            throw new IllegalArgumentException("Client not found with id: " + id);
+            throw new IllegalArgumentException(String.format("Client not found by id: %d", id));
         }
         for (Account account : found.getAccountList()) {
             totalBalance = totalBalance + account.getBalance();
