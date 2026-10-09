@@ -4,4 +4,6 @@ public interface ClientRepository {
     // Get total by client id
     int totalByClient(int id);
 
+    Client findExpensiveClient();
+
 }

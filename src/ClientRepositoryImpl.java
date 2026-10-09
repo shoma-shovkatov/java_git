@@ -36,4 +36,21 @@ public class ClientRepositoryImpl implements ClientRepository {
         }
         return totalBalance;
     }
+
+    public Client findExpensiveClient() {
+        int expBalance = 0;
+        Client client1 = null;
+        for (Client client : clientList) {
+            if (client.getBalance() > expBalance) {
+                expBalance = client.getBalance();
+                client1 = client;
+                if (client == null) {
+                    throw new IllegalArgumentException(String.format("Client not found"));
+                }
+            }
+        }
+        return client1;
+    }
+
+
 }
