@@ -6,4 +6,5 @@ public interface ClientRepository {
 
     Client findExpensiveClient();
 
+    int totalCheapest();
 }
